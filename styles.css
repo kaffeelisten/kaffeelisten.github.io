@@ -447,7 +447,12 @@ p .num { font-family: var(--sans); font-weight: 600; }
 .iphone .k-item { min-height: 88px; }
 .k-item:hover { border-color: #A8A29E; }
 .k-item.sel { background: #FFFBEB; border-color: #D97706; box-shadow: 0 0 0 2px #D97706; }
-.k-item .cup { position: absolute; top: 14px; left: 20px; width: 18px; height: 18px; color: #57534E; }
+/* In the flow, not absolutely placed. The icon used to sit at top:14px over a
+   card whose text was pinned to the bottom, which only worked while the card
+   was tall enough to keep them apart: at 88px on a phone the cup landed on the
+   first letters of the name. `margin-bottom: auto` keeps the same picture —
+   icon at the top, text at the bottom — and cannot collide at any height. */
+.k-item .cup { display: block; width: 18px; height: 18px; margin-bottom: auto; color: #57534E; }
 .k-item.sel .cup { color: #B45309; }
 .k-item b { font-size: 18px; font-weight: 600; }
 .k-item span { font-size: 14px; color: #57534E; }
