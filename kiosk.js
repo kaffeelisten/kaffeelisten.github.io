@@ -1,23 +1,8 @@
 // Kaffeelisten landing page.
-// 1. The device switch in "So geht's".
-// 2. The live kiosk: a rebuild of the app's member flow with invented sample data,
-//    drawn at the device's own viewport and scaled into the frame. Nothing is stored or sent.
+// The live kiosk: a rebuild of the app's member flow with invented sample data,
+// drawn at the device's own viewport and scaled into the frame. Nothing is stored or sent.
 (function () {
   "use strict";
-
-  // ── Device switch ──
-  var steps = document.querySelector(".steps");
-  // On a phone, start with the phone screens.
-  if (steps && window.matchMedia("(max-width: 600px)").matches) {
-    steps.setAttribute("data-device", "phone");
-    document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", String(o.getAttribute("data-device") === "phone")); });
-  }
-  document.querySelectorAll(".seg button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-      if (steps) steps.setAttribute("data-device", b.getAttribute("data-device"));
-    });
-  });
 
   // ── Sample data (invented) ──
   var FIRMS = [
@@ -85,7 +70,7 @@
     if (step === "start") {
       label = "Startbildschirm";
       h = '<div class="k-start">' + CUP + '<div><h3>Kaffeelisten</h3><p>Kaffee, Getränke, Snacks. Kurz tippen, fertig.</p></div>' +
-        '<button class="k-btn k-btn--primary" type="button" data-a="start">Eintrag starten</button><small>Musterhaus · Verwaltung · Datenschutz</small></div>';
+        '<button class="k-btn k-btn--primary" type="button" data-a="start">Eintrag starten</button><small>Musterhaus · Administration · Datenschutz</small></div>';
     } else if (step === "firma") {
       label = "Wer bist du?";
       h = this.top(1) + '<div class="k-body"><h3 class="k-h">Wer bist du?</h3><p class="k-sub">Tippe auf dein Unternehmen.</p><div class="k-list">' +
