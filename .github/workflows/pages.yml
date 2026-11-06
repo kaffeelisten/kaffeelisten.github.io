@@ -28,8 +28,19 @@ jobs:
       - name: Collect the site
         run: |
           mkdir _site
-          cp index.html 404.html styles.css kiosk.js robots.txt .nojekyll _site/
+          # Every page, not a list someone has to remember to extend: impressum.html
+          # was added later and never reached the published site, so the Impressum
+          # link in the footer — the one page German law requires — answered 404.
+          cp *.html *.css *.js robots.txt .nojekyll _site/
           cp -r assets _site/
+          # CNAME is how a custom domain reaches a workflow-published site. It is
+          # absent until the apex moves, so this must not fail the build.
+          [ -f CNAME ] && cp CNAME _site/ || true
+      - name: Check the pages that must exist
+        run: |
+          for f in index.html impressum.html 404.html styles.css kiosk.js; do
+            test -s "_site/$f" || { echo "missing from the published site: $f"; exit 1; }
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
