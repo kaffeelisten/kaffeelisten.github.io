@@ -251,6 +251,28 @@ p .num { font-family: var(--sans); font-weight: 600; }
 @media (max-width: 640px) {
   .try__device .ipad { display: none; }
   .try__device .iphone { display: block; }
+  /* A phone frame around a 375px-wide screen, viewed on a phone, is a picture
+     of the device already in your hand: notch, home bar and aluminium edge all
+     drawn twice. Below 640px the chrome comes off and the preview is simply the
+     app, inline, on a card. The frames stay everywhere there is room for them. */
+  .steps .iphone .device__body,
+  .try__device .iphone .device__body {
+    border-width: 0; padding: 0; background: none; border-radius: 18px;
+    box-shadow: 0 1px 2px rgb(28 25 23 / .08), 0 14px 28px -20px rgb(28 25 23 / .4);
+  }
+  .steps .iphone .statusbar, .steps .iphone .homebar, .steps .iphone .screen::before,
+  .try__device .iphone .statusbar,
+  .try__device .iphone .homebar,
+  .try__device .iphone .screen::before { display: none; }
+  .steps .iphone .screen,
+  .try__device .iphone .screen {
+    border-radius: 18px; box-shadow: none;
+    border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  }
+  /* Only the interactive preview gets a shorter screen: its content is laid out
+     live, so it can fill whatever it is given. The step screenshots keep the
+     real aspect ratio or they would be cropped. */
+  .try__device .iphone .screen { aspect-ratio: 402 / 760; }
 }
 
 /* Split layout */
