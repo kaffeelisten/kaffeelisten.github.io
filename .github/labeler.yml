@@ -1,0 +1,14 @@
+# Path-based area labels for pull requests (actions/labeler v5 syntax), used by the shared
+# conventions workflow from kaffeelisten/.github.
+area:landing:
+  - changed-files:
+      - any-glob-to-any-file: ['index.html', '404.html', 'styles.css', '*.js', 'assets/**', 'robots.txt']
+area:brand:
+  - changed-files:
+      - any-glob-to-any-file: ['assets/layers/**', 'assets/logo.svg', 'assets/og.jpg', 'assets/fonts/**']
+area:delivery:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/**', '.nojekyll']
+area:docs:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**', '*.md']
