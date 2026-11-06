@@ -244,16 +244,13 @@ p .num { font-family: var(--sans); font-weight: 600; }
 .steps { list-style: none; padding: 0; display: grid; gap: clamp(28px, 3vw, 40px); grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
 .steps li { display: grid; gap: 22px; justify-items: center; text-align: center; }
 .steps .device-slot { width: 100%; display: grid; justify-items: center; align-items: end; }
-.steps .iphone { width: min(100%, 250px); }
-.steps .ipad { width: 100%; }
-/* No device chooser. It is one app and the visitor should not have to pick a
-   device to look at it: the step gallery simply shows whichever screen suits
-   the screen it is being read on. The hero already shows both together. */
-.steps .iphone { display: none; }
-@media (max-width: 600px) {
-  .steps .ipad { display: none; }
-  .steps .iphone { display: block; }
-}
+/* The step gallery is portrait, at every width, and there is no device chooser.
+   Both decisions come from the same arithmetic: three steps side by side give
+   each one about 360px, and a tablet screenshot is 1180px of interface — at
+   that width it renders near 30% and the app's own text becomes unreadable.
+   A phone screenshot is 402px native, so the same column shows it at roughly
+   full size. The tablet is where it can be read: the hero and the preview. */
+.steps .iphone { width: min(100%, 340px); }
 .step-n { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--amber); color: var(--ink); font-family: var(--mono); font-weight: 500; font-size: 0.9rem; margin: 0 auto 10px; }
 .steps h3 { font-size: 1.3rem; margin-bottom: 6px; }
 .steps p { color: var(--muted); max-width: 32ch; margin: 0 auto; }
@@ -261,7 +258,6 @@ p .num { font-family: var(--sans); font-weight: 600; }
 .steps li > div:not(.device-slot) { background: var(--milk); border-radius: 18px; padding: 18px 20px 22px; box-shadow: 0 1px 0 rgb(255 255 255 / .7) inset, 0 10px 24px -16px rgb(74 44 23 / .45); width: 100%; }
 @media (max-width: 860px) {
   .steps { grid-template-columns: 1fr; gap: 56px; }
-  .steps .ipad { width: min(100%, 560px); }
 }
 
 /* Try it */
