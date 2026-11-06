@@ -70,7 +70,7 @@
     if (step === "start") {
       label = "Startbildschirm";
       h = '<div class="k-start">' + CUP + '<div><h3>Kaffeelisten</h3><p>Kaffee, Getränke, Snacks. Kurz tippen, fertig.</p></div>' +
-        '<button class="k-btn k-btn--primary" type="button" data-a="start">Eintrag starten</button><small>Musterhaus · Verwaltung · Datenschutz</small></div>';
+        '<button class="k-btn k-btn--primary" type="button" data-a="start">Eintrag starten</button><small>Musterhaus · Administration · Datenschutz</small></div>';
     } else if (step === "firma") {
       label = "Wer bist du?";
       h = this.top(1) + '<div class="k-body"><h3 class="k-h">Wer bist du?</h3><p class="k-sub">Tippe auf dein Unternehmen.</p><div class="k-list">' +
