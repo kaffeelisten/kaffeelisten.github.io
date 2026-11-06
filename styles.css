@@ -4,14 +4,19 @@
    and MacBook Air 13" (1470×956). */
 
 @font-face {
-  font-family: "Inter";
-  src: url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2");
-  font-weight: 100 900; font-style: normal; font-display: swap;
+  font-family: "Funnel Display";
+  src: url("assets/fonts/funnel-display-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 800; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: "JetBrains Mono";
-  src: url("assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
-  font-weight: 500; font-style: normal; font-display: swap;
+  font-family: "Funnel Sans";
+  src: url("assets/fonts/funnel-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Azeret Mono";
+  src: url("assets/fonts/azeret-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
 }
 
 :root {
@@ -31,8 +36,9 @@
   --surface: #FFFFFF;
   --surface-2: #F5F5F4;
 
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --display: "Funnel Display", "Funnel Sans", system-ui, sans-serif;
+  --sans: "Funnel Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Azeret Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --wrap: 1200px;
   --gutter: clamp(16px, 4vw, 40px);
   --radius: 16px;
@@ -59,22 +65,23 @@ body::after {
 
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p, ol, ul, figure, dl, dd { margin: 0; }
-h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--display); font-weight: 750; letter-spacing: -0.025em; line-height: 1.06; text-wrap: balance; }
 p { text-wrap: pretty; }
 a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 6px; }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 .num { font-family: var(--mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+p .num { font-family: var(--sans); font-weight: 600; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .skip { position: absolute; left: 16px; top: -100px; z-index: 200; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 8px; }
 .skip:focus { top: 12px; }
 
-.wordmark { font-weight: 800; letter-spacing: -0.035em; white-space: nowrap; }
+.wordmark { font-family: var(--display); font-weight: 800; letter-spacing: -0.035em; white-space: nowrap; }
 .am { color: var(--amber); }
 
 .eyebrow {
-  font-family: var(--mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.16em;
+  font-family: var(--mono); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--amber-deep); margin-bottom: 14px;
 }
 .lede { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); color: var(--muted); }
@@ -116,10 +123,12 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
 .hero__planes { position: absolute; z-index: -2; inset: 0 0 0 42%; }
 .hero__planes img, .band__bg img { width: 100%; height: 100%; object-fit: cover; }
 .hero__planes img { object-position: 30% 50%; }
-/* The torn sheet: its edge sits at 58–73% of the layer's width. */
-.hero__tear { position: absolute; z-index: -1; top: 0; bottom: 0; height: 100%; width: auto; aspect-ratio: 2 / 3;
-  left: calc(52% - var(--h) * 2 / 3 * 0.66); max-width: none; }
-.hero__fill { position: absolute; z-index: -1; top: 0; bottom: 0; left: 0; width: calc(52% - var(--h) * 2 / 3 * 0.66 + 2px); background: var(--paper); }
+/* The torn stack (paper over kraft, shadows baked in): solid paper up to 54% of its width,
+   the paper tear wanders between 54% and 66%, the kraft one beyond it. --x is where it sits. */
+.hero { --tw: calc(var(--h) * 0.578); --x: 54%; }
+.hero__tear { position: absolute; z-index: -1; top: 0; bottom: 0; height: 100%; width: var(--tw); max-width: none;
+  left: calc(var(--x) - var(--tw) * 0.6); }
+.hero__fill { position: absolute; z-index: -1; top: 0; bottom: 0; left: 0; width: calc(var(--x) - var(--tw) * 0.06 + 2px); background: var(--paper); }
 .hero__grid { width: 100%; display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 40px; align-items: center; padding-block: 56px; }
 .hero__copy { max-width: 540px; }
 .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); margin-bottom: 22px; }
@@ -137,9 +146,9 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
   .hero__copy { padding: 0 var(--gutter) 28px; max-width: none; }
   .hero__grid.wrap { padding-inline: 0; }
   .hero__stage { padding: 14vw var(--gutter) 12vw; overflow: hidden; position: relative; isolation: isolate; }
-  .hero__stage::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("assets/layers/planes-800.webp") 30% 50% / cover; }
-  .hero__stage::after { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -2px; height: calc(100vw / 9.37);
-    background: url("assets/layers/tear-h-800.webp") top / 100% 100% no-repeat; }
+  .hero__stage::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("assets/layers/planes-1280.webp") 30% 50% / cover; }
+  .hero__stage::after { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: -2px; height: var(--edge-h);
+    background: url("assets/layers/edge-warm-2560.webp") 20% 0 / auto 100% repeat-x; }
   .hero__stage .ipad { width: 86%; }
   .hero__stage .iphone { width: 29%; right: var(--gutter); bottom: 6vw; }
 }
@@ -153,17 +162,26 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
 /* Torn bands: a coloured layer with paper torn over its top and bottom. */
 .band { position: relative; isolation: isolate; padding: calc(clamp(72px, 10vw, 128px) + 4vw) 0; }
 .band__bg { position: absolute; inset: 0; z-index: -2; }
-/* The light band keeps its planes at the edges: a mask clears the middle for the devices. */
+/* The light band's layer is a calm milk field with its paper planes only at the edges. */
 .band--light { background: var(--milk); }
-.band--light .band__bg { -webkit-mask-image: linear-gradient(90deg, #000 0, transparent 16%, transparent 84%, #000 100%); mask-image: linear-gradient(90deg, #000 0, transparent 16%, transparent 84%, #000 100%); }
-@media (max-width: 860px) { .band--light .band__bg { -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 80%, #000 100%); mask-image: linear-gradient(180deg, transparent 0, transparent 80%, #000 100%); } }
+.band__bg--edges { background: url("assets/layers/band-light-left-1440.webp") left center / auto 100% no-repeat,
+  url("assets/layers/band-light-right-1440.webp") right center / auto 100% no-repeat; }
+@media (max-width: 1100px) { .band__bg--edges { background-image: url("assets/layers/band-light-left-720.webp"), url("assets/layers/band-light-right-720.webp"); } }
+@media (max-width: 860px) { .band--light .band__bg { display: none; } }
+/* Edges: stacks of torn paper (paper, amber, kraft, espresso) with their shadows baked in.
+   They tile seamlessly along x at full resolution instead of being stretched. */
+:root { --edge-h: clamp(64px, 9vw, 140px); }
 .band::before, .band::after {
-  content: ""; position: absolute; left: 0; right: 0; z-index: -1; height: calc(100vw / 9.37); pointer-events: none;
-  background: url("assets/layers/tear-h-1536.webp") top / 100% 100% no-repeat;
+  content: ""; position: absolute; left: 0; right: 0; z-index: -1; height: var(--edge-h); pointer-events: none;
+  background: url("assets/layers/edge-warm-5120.webp") 0 0 / auto 100% repeat-x;
 }
+.band--dark::before, .band--dark::after { background-image: url("assets/layers/edge-dark-5120.webp"); height: calc(var(--edge-h) * 1.15); }
 .band::before { top: -1px; }
-.band::after { bottom: -1px; transform: scale(-1, -1); }
-@media (max-width: 800px) { .band::before, .band::after { background-image: url("assets/layers/tear-h-800.webp"); } }
+.band::after { bottom: -1px; transform: scale(-1, -1); background-position: 61% 0; }
+@media (max-width: 800px) {
+  .band::before, .band::after { background-image: url("assets/layers/edge-warm-2560.webp"); }
+  .band--dark::before, .band--dark::after { background-image: url("assets/layers/edge-dark-2560.webp"); }
+}
 .band--dark { color: var(--paper); }
 .band--dark .lede, .band--dark p { color: #E7E0D6; }
 .band--dark .eyebrow { color: #F4B860; }
@@ -191,6 +209,8 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
 .step-n { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--amber); color: var(--ink); font-family: var(--mono); font-weight: 500; font-size: 0.9rem; margin: 0 auto 10px; }
 .steps h3 { font-size: 1.3rem; margin-bottom: 6px; }
 .steps p { color: var(--muted); max-width: 32ch; margin: 0 auto; }
+/* Captions sit on their own milk sheet, a layer above the band's paper planes. */
+.steps li > div:not(.device-slot) { background: var(--milk); border-radius: 18px; padding: 18px 20px 22px; box-shadow: 0 1px 0 rgb(255 255 255 / .7) inset, 0 10px 24px -16px rgb(74 44 23 / .45); width: 100%; }
 @media (max-width: 860px) {
   .steps { grid-template-columns: 1fr; gap: 56px; }
   .steps .ipad { width: min(100%, 560px); }
@@ -251,9 +271,8 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
 
 /* Closing: the banner, set live */
 .closing { position: relative; isolation: isolate; overflow: hidden; --h: clamp(380px, 44vw, 560px); min-height: var(--h); display: grid; align-items: center; }
-.closing .hero__planes { inset: 0 0 0 60%; }
-.closing .hero__tear { left: calc(70% - var(--h) * 2 / 3 * 0.66); }
-.closing .hero__fill { width: calc(70% - var(--h) * 2 / 3 * 0.66 + 2px); }
+.closing .hero__planes { inset: 0 0 0 68%; }
+.closing { --tw: calc(var(--h) * 0.578); --x: 77%; }
 .closing__copy { display: grid; gap: 18px; justify-items: start; max-width: 640px; }
 .closing .wordmark { font-size: clamp(3rem, 6.6vw, 6.2rem); line-height: 0.9; }
 .closing p { font-size: clamp(1.125rem, 2vw, 1.5rem); }
@@ -261,7 +280,7 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
   .closing { --h: auto; min-height: 0; padding: 64px 0 calc(64px + 34vw); }
   .closing .hero__planes { inset: auto 0 0 0; height: calc(34vw + 40px); }
   .closing .hero__tear, .closing .hero__fill { display: none; }
-  .closing .hero__planes::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: calc(100vw / 9.37); background: url("assets/layers/tear-h-800.webp") top / 100% 100% no-repeat; z-index: 1; }
+  .closing .hero__planes::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: var(--edge-h); background: url("assets/layers/edge-warm-2560.webp") 40% 0 / auto 100% repeat-x; z-index: 1; }
 }
 
 /* Footer */
@@ -274,7 +293,14 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
    Each frame is a container; sizes are in device points (--pt) so bezels, radii, the Dynamic
    Island and the status bars keep the real proportions at any width. */
 .ipad, .iphone, .mac { container-type: inline-size; }
-.device__body { position: relative; background: #1C1917; box-shadow: inset 0 0 0 1px #3A3532, 0 30px 60px -28px rgb(28 25 23 / .55), 0 2px 4px rgb(28 25 23 / .2); }
+/* Black glass inside a thin metal band (the aluminium edge you see from the front). */
+.device__body {
+  position: relative; border-style: solid; border-color: transparent;
+  background: linear-gradient(#0D0C0B, #0D0C0B) padding-box,
+    linear-gradient(150deg, #CFCBC5 0%, #7D7873 22%, #B8B3AD 48%, #65615C 74%, #A9A49E 100%) border-box;
+  box-shadow: 0 1px 0 rgb(255 255 255 / .35) inset, 0 34px 70px -30px rgb(28 25 23 / .6), 0 12px 24px -14px rgb(28 25 23 / .35), 0 2px 4px rgb(28 25 23 / .18);
+}
+.device__body .screen { box-shadow: 0 0 0 1px rgb(255 255 255 / .05); }
 .screen { position: relative; overflow: hidden; background: var(--paper); display: flex; flex-direction: column; }
 .screen > img, .screen > .kiosk-host { width: 100%; flex: none; }
 .statusbar { flex: none; display: flex; align-items: center; justify-content: space-between; color: var(--ink); font-weight: 600; background: var(--paper); line-height: 1; }
@@ -283,16 +309,20 @@ a { color: inherit; text-decoration-color: var(--amber); text-decoration-thickne
 .homebar { flex: 1; position: relative; background: var(--paper); }
 .homebar::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); background: var(--ink); border-radius: 99px; }
 
-/* iPad Air 11" (M3): 1180×820 pt, landscape. Bezel ≈ 3.6%, display radius 18 pt. */
-.ipad .device__body { --pt: calc(92.8cqw / 1180); padding: 3.6cqw; border-radius: calc(18 * var(--pt) + 3.6cqw); }
+/* iPad Air 11" (M3), landscape. Body 247.6 × 178.5 mm, display 227.0 × 157.8 mm (2360 × 1640 px at
+   264 ppi), so the bezel is 10.3 mm = 4.16 % of the body width, all round. 1180×820 pt, display
+   radius 18 pt. The front camera sits on the long edge, top centre in landscape. */
+.ipad .device__body { --pt: calc(91.68cqw / 1180); border-width: 0.42cqw; padding: 3.74cqw; border-radius: calc(18 * var(--pt) + 4.16cqw); }
 .ipad .screen { aspect-ratio: 1180 / 820; border-radius: calc(18 * var(--pt)); }
 .ipad .statusbar { height: calc(24 * var(--pt)); padding: 0 calc(20 * var(--pt)); font-size: calc(12 * var(--pt)); }
 .ipad .statusbar .sb-r { gap: calc(5 * var(--pt)); padding: calc(7 * var(--pt)) 0; }
 .ipad .homebar::after { width: calc(310 * var(--pt)); height: calc(5 * var(--pt)); bottom: calc(7 * var(--pt)); }
-.ipad .device__body::before { content: ""; position: absolute; top: 50%; left: 1.6cqw; width: 0.7cqw; height: 0.7cqw; margin-top: -0.35cqw; border-radius: 50%; background: #2E2A27; }
+.ipad .device__body::before { content: ""; position: absolute; left: 50%; top: 1.66cqw; width: 0.62cqw; height: 0.62cqw; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 35% 35%, #3B4A5A 0 22%, #15181C 45%, #050505 70%); box-shadow: 0 0 0 0.12cqw #1A1918; }
 
 /* iPhone 17 Pro: 402×874 pt. Display radius 55 pt, Dynamic Island 125×37 pt at 11 pt. */
-.iphone .device__body { --pt: calc(94.4cqw / 402); padding: 2.8cqw; border-radius: calc(55 * var(--pt) + 2.8cqw); }
+/* iPhone 17 Pro: body 150.0 × 71.9 mm, display 6.3 in (2622 × 1206 px at 460 ppi, 66.6 mm wide),
+   so frame plus bezel is 2.65 mm = 3.69 % of the width. */
+.iphone .device__body { --pt: calc(92.62cqw / 402); border-width: 0.95cqw; padding: 2.74cqw; border-radius: calc(55 * var(--pt) + 3.69cqw); }
 .iphone .screen { aspect-ratio: 402 / 874; border-radius: calc(55 * var(--pt)); }
 .iphone .screen::before { content: ""; position: absolute; z-index: 3; top: calc(11 * var(--pt)); left: 50%; width: calc(125 * var(--pt)); height: calc(37 * var(--pt)); transform: translateX(-50%); border-radius: 99px; background: #0C0A09; }
 .iphone .statusbar { height: calc(62 * var(--pt)); padding: calc(4 * var(--pt)) calc(32 * var(--pt)) 0 calc(50 * var(--pt)); font-size: calc(17 * var(--pt)); }

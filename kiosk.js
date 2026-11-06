@@ -23,7 +23,7 @@
   var FIRMS = [
     { name: "Beispiel AG", color: "#C2410C", people: ["Anna B.", "Paul B."] },
     { name: "Muster e.V.", color: "#BE185D", people: ["Lea K."] },
-    { name: "Musterfirma GmbH", color: "#7C3AED", people: ["Erika M.", "Max M.", "Lena S.", "Jonas K."], firm: true },
+    { name: "Musterfirma GmbH", color: "#7C3AED", people: ["Paula R.", "Max M.", "Lena S.", "Jonas K."], firm: true },
     { name: "Studio Ahorn", color: "#B45309", people: ["Mia A.", "Noah A."] },
     { name: "Werkstatt Nord", color: "#15803D", people: ["Tom W."] }
   ];
@@ -34,7 +34,8 @@
   };
   var NAME_COLORS = ["#15803D", "#BE185D", "#7C3AED", "#7C3AED"];
 
-  var CUP = '<svg viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22h38v14a14 14 0 0 1-14 14h-10A14 14 0 0 1 8 36z"/><path d="M46 26h4a7 7 0 0 1 0 14h-5"/><path d="M20 6c-2 3 2 6 0 9M27 4c-2 3 2 6 0 9M34 6c-2 3 2 6 0 9"/></svg>';
+  // The app's own CappuccinoMark (apps/web/src/components/CappuccinoMark.tsx), unchanged.
+  var CUP = '<svg class="k-mark" viewBox="0 0 200 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 60c0-3 3-6 8-6h70c5 0 8 3 8 6"/><ellipse cx="83" cy="60" rx="43" ry="6"/><path d="M40 60v40c0 14 12 26 26 26h34c14 0 26-12 26-26V60"/><path d="M126 70h12c10 0 18 8 18 18v0c0 10-8 18-18 18h-12"/><path d="M70 28c-3 6 3 12 0 18"/><path d="M83 22c-3 6 3 12 0 18"/><path d="M96 28c-3 6 3 12 0 18"/></svg>';
   var MUG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/></svg>';
   var ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
   var BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>';

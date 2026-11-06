@@ -8,16 +8,18 @@ The Kaffeelisten landing page. Static HTML and CSS with one small script, no bui
 | `styles.css` | Inks and type from the brand book, the paper layers, and the device frames. |
 | `kiosk.js` | The device switch and the live kiosk: a rebuild of the app's member flow with invented sample data. Nothing is stored or sent. |
 | `404.html` | Not-found page. |
-| `assets/layers/` | Cut-paper layers in the language of `brand/plates/banner.png`: the plane fields, the dark and light bands, and two torn-edge masks. Drawn with the brand pipeline (`playbook/brand`), the torn paper shifted to Paper `#FAFAF9`. |
+| `assets/layers/` | Cut-paper layers in the language of `brand/plates/banner.png`, all at full resolution with real transparency: the plane fields, the light band's edge strips, the dark band, the hero's torn stack (paper over kraft) and two edge stacks (paper, amber, kraft, espresso) that tile seamlessly along the page. Each torn sheet was drawn on its own with the brand pipeline (`playbook/brand`, 2560 px, transparent background), then shifted to its brand ink and stacked with its shadow baked in. |
 | `assets/app/` | Screens from the real app (`kaffeelisten/kaffeelisten`, `main`), rendered with invented companies and names. |
 | `assets/og.jpg` | Copy of `brand/assets/og.jpg`, used for link previews. |
 | `assets/logo.svg` | Copy of `brand/logo/logo.svg`. |
-| `assets/fonts/` | Inter and JetBrains Mono, self-hosted. |
+| `assets/fonts/` | Funnel Display, Funnel Sans and Azeret Mono, self-hosted. See its README for why. |
 
 ## Device frames
 
-Each frame is drawn in the device's own points, so bezels, corner radii, status bars and the
-Dynamic Island keep their real proportions at any width. The app screens are captured at the
+Each frame is drawn in the device's own points from Apple's published dimensions, so bezels, the
+metal band, corner radii, the camera, status bars and the Dynamic Island keep their real
+proportions at any width. On the iPad Air (M3) the front camera sits on the long edge, top centre
+in landscape. The app screens are captured at the
 viewport the app actually gets inside each device's system bars.
 
 | Device | Screen (pt) | App viewport (pt) |
