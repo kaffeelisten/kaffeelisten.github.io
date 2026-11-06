@@ -1,23 +1,8 @@
 // Kaffeelisten landing page.
-// 1. The device switch in "So geht's".
-// 2. The live kiosk: a rebuild of the app's member flow with invented sample data,
-//    drawn at the device's own viewport and scaled into the frame. Nothing is stored or sent.
+// The live kiosk: a rebuild of the app's member flow with invented sample data,
+// drawn at the device's own viewport and scaled into the frame. Nothing is stored or sent.
 (function () {
   "use strict";
-
-  // ── Device switch ──
-  var steps = document.querySelector(".steps");
-  // On a phone, start with the phone screens.
-  if (steps && window.matchMedia("(max-width: 600px)").matches) {
-    steps.setAttribute("data-device", "phone");
-    document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", String(o.getAttribute("data-device") === "phone")); });
-  }
-  document.querySelectorAll(".seg button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-      if (steps) steps.setAttribute("data-device", b.getAttribute("data-device"));
-    });
-  });
 
   // ── Sample data (invented) ──
   var FIRMS = [
