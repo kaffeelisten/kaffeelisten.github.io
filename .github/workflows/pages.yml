@@ -30,7 +30,7 @@ jobs:
           mkdir _site
           # Every page, not a list someone has to remember to extend: impressum.html
           # was added later and never reached the published site, so the Impressum
-          # link in the footer — the one page German law requires — answered 404.
+          # link in the footer – the one page German law requires – answered 404.
           cp *.html *.css *.js robots.txt .nojekyll _site/
           cp -r assets _site/
           # CNAME is how a custom domain reaches a workflow-published site. It is
