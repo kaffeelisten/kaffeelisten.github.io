@@ -27,19 +27,28 @@ jobs:
       - uses: actions/checkout@v4
       - name: Collect the site
         run: |
+          # Publish everything except what is repository furniture. This used to
+          # be an allow-list and it failed twice the same way: impressum.html was
+          # added and never published, so the one page German law requires
+          # answered 404 (6 November); then sitemap.xml and llms.txt were added
+          # and did the same (20 November), because the list had been widened to
+          # globs for .html, .css and .js but still named every other file.
+          #
+          # A deny-list cannot fail that way: a new file ships unless someone
+          # says it should not.
           mkdir _site
-          # Every page, not a list someone has to remember to extend: impressum.html
-          # was added later and never reached the published site, so the Impressum
-          # link in the footer – the one page German law requires – answered 404.
-          cp *.html *.css *.js robots.txt .nojekyll _site/
-          cp -r assets _site/
-          # CNAME is how a custom domain reaches a workflow-published site. It is
-          # absent until the apex moves, so this must not fail the build.
-          [ -f CNAME ] && cp CNAME _site/ || true
-      - name: Check the pages that must exist
+          rsync -a             --exclude='.git'             --exclude='.github'             --exclude='_site'             --exclude='docs'             --exclude='README.md'             ./ _site/
+      - name: Check what the site cannot be published without
         run: |
-          for f in index.html impressum.html 404.html styles.css kiosk.js; do
+          # Pages a visitor reaches, and the files that make the site findable.
+          # Both have been silently missing before.
+          for f in index.html impressum.html 404.html styles.css kiosk.js                    robots.txt sitemap.xml llms.txt .nojekyll; do
             test -s "_site/$f" || { echo "missing from the published site: $f"; exit 1; }
+          done
+          test -d _site/assets || { echo "missing from the published site: assets/"; exit 1; }
+          # Repository furniture must NOT ship.
+          for f in README.md .github docs; do
+            test -e "_site/$f" && { echo "should not be published: $f"; exit 1; } || true
           done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
