@@ -25,6 +25,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Needed to date each page from its own last commit, below.
+          fetch-depth: 0
       - name: Collect the site
         run: |
           # Publish everything except what is repository furniture. This used to
@@ -38,6 +41,25 @@ jobs:
           # says it should not.
           mkdir _site
           rsync -a             --exclude='.git'             --exclude='.github'             --exclude='_site'             --exclude='docs'             --exclude='README.md'             ./ _site/
+      - name: Date the sitemap from the pages themselves
+        run: |
+          # lastmod was written by hand once and went stale immediately: it
+          # still claimed 10 November for a page edited on the 20th. A date
+          # that lies is worse than no date, because Google reads it to decide
+          # whether a re-crawl is worth its time.
+          home=$(git log -1 --format=%cs -- index.html styles.css kiosk.js)
+          imp=$(git log -1 --format=%cs -- impressum.html)
+          sm=https://www.sitemaps.org/schemas/sitemap/0.9
+          {
+            echo '<?xml version="1.0" encoding="UTF-8"?>'
+            echo "<urlset xmlns=\"$sm\">"
+            echo "  <url><loc>https://kaffeelisten.de/</loc><lastmod>$home</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>"
+            echo "  <url><loc>https://kaffeelisten.de/impressum.html</loc><lastmod>$imp</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>"
+            echo '</urlset>'
+          } > _site/sitemap.xml
+          cat _site/sitemap.xml
+
+
       - name: Check what the site cannot be published without
         run: |
           # Pages a visitor reaches, and the files that make the site findable.
