@@ -49,7 +49,11 @@ jobs:
           # whether a re-crawl is worth its time.
           home=$(git log -1 --format=%cs -- index.html styles.css kiosk.js)
           imp=$(git log -1 --format=%cs -- impressum.html)
-          sm=https://www.sitemaps.org/schemas/sitemap/0.9
+          # The namespace is an identifier, not a URL to fetch, and the sitemaps
+          # protocol spells it with http. Writing https here is not a modernisation:
+          # it is a different namespace, and a validator reads the document as not
+          # being a sitemap at all. Do not "fix" the scheme.
+          sm=http://www.sitemaps.org/schemas/sitemap/0.9
           {
             echo '<?xml version="1.0" encoding="UTF-8"?>'
             echo "<urlset xmlns=\"$sm\">"
