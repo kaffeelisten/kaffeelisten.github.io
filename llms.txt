@@ -21,7 +21,7 @@ Instanz wird mit dem jeweiligen Haus vereinbart.
 ## Seiten
 
 - [Startseite](https://kaffeelisten.de/): Was Kaffeelisten ist, wie es bedient wird und was am Monatsende passiert.
-- [So geht's](https://kaffeelisten.de/#so-gehts): Firma, Name, Getränk - der Ablauf am Tablet in drei Schritten.
+- [So geht's](https://kaffeelisten.de/#so-gehts): Firma, Name, Getränk – der Ablauf am Tablet in drei Schritten.
 - [Der Monat auf einen Blick](https://kaffeelisten.de/#monatsende): Was im Monatsbericht steht und wie er verschickt wird.
 - [Verwaltung](https://kaffeelisten.de/#verwaltung): Firmen, Namen und Preise anlegen, PIN-geschützt.
 - [Was gespeichert wird](https://kaffeelisten.de/#inhalt): Firma und Name, kein Konto, Archiv nach einem Monat.
@@ -31,7 +31,6 @@ Instanz wird mit dem jeweiligen Haus vereinbart.
 ## Ausprobieren
 
 - [Demo](https://demo.kaffeelisten.de/): die laufende Anwendung auf einem erfundenen Campus, ohne Konto
-- [llms.txt der Demo](https://demo.kaffeelisten.de/llms.txt): was die Demo ist und was dort nicht abgerufen werden sollte
 
 ## Quellcode
 
