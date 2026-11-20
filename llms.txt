@@ -1,0 +1,44 @@
+# Kaffeelisten
+
+> Kaffeelisten ersetzt die Strichliste neben der Kaffeemaschine. Ein Tablet hängt an der Wand, man tippt Firma, Namen und Getränk an, und am Monatsende geht ein Bericht an die Hausverwaltung, sortiert nach Firma und Person.
+
+Gebaut für Häuser, in denen mehrere Firmen eine Küche teilen: Gründerzentren,
+Technologieparks, Coworking. Der Fall, den übliche Getränke-Apps nicht abdecken, ist
+die Abrechnung zwischen mehreren Mietparteien statt innerhalb einer Gruppe.
+
+Kein Konto und keine App für die Leute im Haus. Gespeichert werden Firma, Name und
+was entnommen wurde, mehr nicht. Nur die Verwaltung meldet sich an, mit einer PIN.
+Der Quellcode ist offen, Apache-2.0.
+
+Ausprobieren lässt sich alles unter https://demo.kaffeelisten.de – dieselbe
+Anwendung auf einem erfundenen Campus, ohne Konto und ohne Installation. Die
+Firmen und Namen dort sind ausgedacht, die Daten werden zurückgesetzt.
+
+Kaffeelisten ist ein Projekt von Alexander Rudaev und Fares Elbermawy. Es wird
+nicht von einer Hochschule oder einem Campus betrieben; der Betrieb einer
+Instanz wird mit dem jeweiligen Haus vereinbart.
+
+## Seiten
+
+- [Startseite](https://kaffeelisten.de/): Was Kaffeelisten ist, wie es bedient wird und was am Monatsende passiert.
+- [So geht's](https://kaffeelisten.de/#so-gehts): Firma, Name, Getränk - der Ablauf am Tablet in drei Schritten.
+- [Der Monat auf einen Blick](https://kaffeelisten.de/#monatsende): Was im Monatsbericht steht und wie er verschickt wird.
+- [Verwaltung](https://kaffeelisten.de/#verwaltung): Firmen, Namen und Preise anlegen, PIN-geschützt.
+- [Was gespeichert wird](https://kaffeelisten.de/#inhalt): Firma und Name, kein Konto, Archiv nach einem Monat.
+- [Gute Fragen](https://kaffeelisten.de/#fragen): Häufige Fragen und die Antworten darauf.
+- [Impressum](https://kaffeelisten.de/impressum.html): Kontakt, Impressum und die Datenschutzhinweise zu dieser Website und zur App.
+
+## Ausprobieren
+
+- [Demo](https://demo.kaffeelisten.de/): die laufende Anwendung auf einem erfundenen Campus, ohne Konto
+- [llms.txt der Demo](https://demo.kaffeelisten.de/llms.txt): was die Demo ist und was dort nicht abgerufen werden sollte
+
+## Quellcode
+
+- [kaffeelisten/kaffeelisten](https://github.com/kaffeelisten/kaffeelisten): Die Anwendung. React, TypeScript, Supabase, Apache-2.0.
+- [README](https://raw.githubusercontent.com/kaffeelisten/kaffeelisten/main/README.md): das Projekt, Aufbau und Betrieb, als reiner Text
+- [Lizenz](https://github.com/kaffeelisten/kaffeelisten/blob/main/LICENSE): Apache-2.0.
+
+## Fragen
+
+Fehler und Fragen: https://github.com/kaffeelisten/kaffeelisten/issues

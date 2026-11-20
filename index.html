@@ -23,6 +23,127 @@
   <link rel="preload" href="assets/fonts/funnel-display-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/layers/planes-2560.webp" as="image" media="(min-width: 901px)">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://kaffeelisten.de/#organization",
+        "name": "Kaffeelisten",
+        "url": "https://kaffeelisten.de/",
+        "logo": "https://kaffeelisten.de/assets/logo.svg",
+        "sameAs": [
+          "https://github.com/kaffeelisten"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://kaffeelisten.de/#website",
+        "url": "https://kaffeelisten.de/",
+        "name": "Kaffeelisten",
+        "inLanguage": "de-DE",
+        "publisher": {
+          "@id": "https://kaffeelisten.de/#organization"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://kaffeelisten.de/#app",
+        "name": "Kaffeelisten",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": "https://kaffeelisten.de/",
+        "inLanguage": "de-DE",
+        "description": "Ein Tablet an der Kaffeemaschine ersetzt die Strichliste an der Wand. Firma, Name, Getränk. Am Monatsende kommt der Bericht, sortiert nach Firma und Person.",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "publisher": {
+          "@id": "https://kaffeelisten.de/#organization"
+        },
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Alexander Rudaev",
+            "url": "https://github.com/arudaev"
+          },
+          {
+            "@type": "Person",
+            "name": "Fares Elbermawy",
+            "url": "https://github.com/FaresM7"
+          }
+        ],
+        "sameAs": [
+          "https://github.com/kaffeelisten/kaffeelisten"
+        ],
+        "softwareHelp": {
+          "@type": "CreativeWork",
+          "url": "https://kaffeelisten.de/#fragen"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://kaffeelisten.de/#faq",
+        "inLanguage": "de-DE",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Brauche ich ein Konto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein. Am Tablet tippst du Firma und Namen an. Nur die Verwaltung meldet sich an, mit einer PIN."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was, wenn ich mich vertippe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Direkt nach dem Speichern zeigt das Tablet „Rückgängig“. Ein Tipp, und der Eintrag ist wieder weg."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Geht das auch auf dem Handy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Kaffeelisten läuft in jedem aktuellen Browser, am Tablet an der Wand genauso wie auf dem eigenen Handy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kann die Firma statt der Person zahlen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Pro Firma lässt sich einstellen, ob die Leute für sich selbst buchen, für die Firma oder beides."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wer sieht meine Einträge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die Verwaltung des Hauses. Im Monatsbericht stehen sie unter deiner Firma und deinem Namen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ist der Quellcode offen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Er liegt auf GitHub unter der Lizenz Apache-2.0."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#inhalt">Zum Inhalt springen</a>
