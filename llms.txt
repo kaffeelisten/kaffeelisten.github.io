@@ -1,0 +1,29 @@
+# Kaffeelisten
+
+> Kaffeelisten ersetzt die Strichliste neben der Kaffeemaschine. Ein Tablet hängt an der Wand, man tippt Firma, Namen und Getränk an, und am Monatsende geht ein Bericht an die Hausverwaltung, sortiert nach Firma und Person.
+
+Gebaut für Häuser, in denen mehrere Firmen eine Küche teilen: Gründerzentren,
+Technologieparks, Coworking. Der Fall, den übliche Getränke-Apps nicht abdecken, ist
+die Abrechnung zwischen mehreren Mietparteien statt innerhalb einer Gruppe.
+
+Kein Konto und keine App für die Leute im Haus. Gespeichert werden Firma, Name und
+was entnommen wurde, mehr nicht. Nur die Verwaltung meldet sich an, mit einer PIN.
+Der Quellcode ist offen, Apache-2.0.
+
+Eine Live-Demo mit erfundenen Daten liegt unter demo.kaffeelisten.de. Sie ist für
+Menschen gedacht und bewusst von der Suche ausgenommen.
+
+## Seiten
+
+- [Startseite](https://kaffeelisten.de/): Was Kaffeelisten ist, wie es bedient wird und was am Monatsende passiert.
+- [So geht's](https://kaffeelisten.de/#so-gehts): Firma, Name, Getränk - der Ablauf am Tablet in drei Schritten.
+- [Der Monat auf einen Blick](https://kaffeelisten.de/#monatsende): Was im Monatsbericht steht und wie er verschickt wird.
+- [Verwaltung](https://kaffeelisten.de/#verwaltung): Firmen, Namen und Preise anlegen, PIN-geschützt.
+- [Was gespeichert wird](https://kaffeelisten.de/#inhalt): Firma und Name, kein Konto, Archiv nach einem Monat.
+- [Gute Fragen](https://kaffeelisten.de/#fragen): Häufige Fragen und die Antworten darauf.
+- [Impressum](https://kaffeelisten.de/impressum.html): Kontakt, Impressum und die Datenschutzhinweise zu dieser Website und zur App.
+
+## Quellcode
+
+- [kaffeelisten/kaffeelisten](https://github.com/kaffeelisten/kaffeelisten): Die Anwendung. React, TypeScript, Supabase, Apache-2.0.
+- [Lizenz](https://github.com/kaffeelisten/kaffeelisten/blob/main/LICENSE): Apache-2.0.
