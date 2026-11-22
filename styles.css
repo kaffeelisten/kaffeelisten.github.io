@@ -402,11 +402,8 @@ p .num { font-family: var(--sans); font-weight: 600; }
 .iphone .kiosk { width: 402px; height: 778px; }
 .kiosk button { -webkit-tap-highlight-color: transparent; }
 .k-start { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; position: relative; padding: 24px; text-align: center; }
-/* Sized by height, not width. The cup was a 200x160 box and the ring is 239x241,
-   so holding the width made the mark 26% taller and pushed the flex column it sits
-   in. 128px and 90px are the heights the old mark rendered at. */
-.k-start svg { width: auto; height: 128px; color: #57534E; }
-.iphone .k-start svg { width: auto; height: 90px; }
+.k-start svg { width: 160px; height: auto; color: #57534E; }
+.iphone .k-start svg { width: 112px; }
 .k-start h3 { font-size: 48px; font-weight: 700; letter-spacing: -0.025em; line-height: 1; }
 .iphone .k-start h3 { font-size: 30px; }
 .k-start p { font-size: 20px; color: #57534E; margin-top: 10px; }
